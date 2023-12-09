@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Maanai Dekhi</title>
+        
+        <!-- Favicon -->
+        <link rel="icon" href="logo.jpg" type="image/x-icon">
+    
+        <!-- Google Maps API Script -->
+        <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&amp;callback=initMap" async="" defer=""></script>
+    
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                overflow-x: hidden;
+            }
+    
+            .header {
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-image: url('headerbackground.jpg');
+                background-size: cover;
+                background-position: top;
+                background-repeat: no-repeat;
+                height: 50vh;
+            }
+    
+            .centered-image {
+                max-width: 100%;
+                height: auto;
+                object-fit: contain;
+                position: relative;
+                z-index: 1;
+            }
+    
+            .welcome-text {
+                text-align: center;
+                padding: 20px;
+                z-index: 2;
+                color: #000;
+            }
+    
+            .welcome-text h2 {
+                font-size: 2em;
+                margin-bottom: 10px;
+                color: #000;
+            }
+    
+            .welcome-text p {
+                font-size: 1em;
+                margin: 0;
+                color: #000;
+            }
+    
+            .options-bar {
+                text-align: center;
+                background-color: #f0f0f0;
+                padding: 10px 0;
+            }
+    
+            .options-bar a {
+                margin: 0 15px;
+                text-decoration: none;
+                color: #000;
+                font-weight: bold;
+                font-size: 1.2em;
+                transition: transform 0.5s ease-in-out;
+            }
+    
+            .options-bar a:hover {
+                color: #333;
+                transform: translateY(-3px);
+            }
+    
+            .product-images {
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                margin: 20px;
+                opacity: 0;
+                animation: slideDown 1s ease-in-out forwards;
+            }
+    
+            @keyframes slideDown {
+                from {
+                    transform: translateY(-50px);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateY(0);
+                    opacity: 1;
+                }
+            }
+    
+            .product-image {
+                margin: 10px;
+                max-width: 300px;
+                width: 100%;
+                height: auto;
+            }
+    
+            .small-texts {
+                background-color: #f0f0f0;
+                color: #000000;
+                padding: 20px;
+                display: flex;
+                justify-content: space-around;
+            }
+    
+            #map {
+                height: 200px; /* Set the desired height of the map */
+                width: 100%;
+                max-width: 600px; /* Set the maximum width of the map */
+                margin: 20px;
+            }
+    
+            /* Media query for smaller screens */
+            @media screen and (max-width: 768px) {
+                .welcome-text {
+                    bottom: 50px;
+                }
+            }
+        </style>
+    <script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/55/3/common.js"></script><script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/55/3/util.js"></script></head>
+    <body>
+
+        <div class="header">
+            <img src="logo.jpg" alt="Logo" class="centered-image">
+        </div>
+    
+        <div class="welcome-text">
+            <h2>Welcome to Maanai Dekhi</h2>
+            <p>
+                Welcome to Maanai Dekhi, where we bring warmth and a personal touch to your moments. Immerse yourself in the enchanting glow of our handcrafted candles, reminiscent of the quality and charm of Yankee Candles. Each candle is a labor of love, crafted with precision and care to infuse your space with a unique and comforting fragrance. But we're more than just candles; we're the creators of affordable and one-of-a-kind gifts that speak to the heart. Explore our curated collection, where every piece tells a story. From personalized home decor to custom-crafted gifts, we take pride in offering you treasures that are as distinctive as the moments you cherish.
+            </p>
+        </div>
+    
+        <div class="options-bar">
+            <a href="#" onclick="showProducts('all')">All</a>
+            <a href="#" onclick="showProducts('cake')">Cake</a>
+            <a href="#" onclick="showProducts('molds')">Molds</a>
+            <a href="#" onclick="showProducts('glass')">Glass</a>
+            <a href="#" onclick="showProducts('botanical')">Botanical</a>
+            <a href="#" onclick="showProducts('otherGlass')">Other Glass</a>
+        </div>
+    
+        <div class="product-images" id="productImages">
+            <!-- Product images will be displayed here -->
+        </div>
+    
+        <!-- Small Texts Section -->
+        <div class="small-texts">
+            <div>
+                <p><a href="#" onclick="openMap()">Location</a></p>
+            </div>
+            <div>
+                <p><a href="https://www.instagram.com/maanaidekhi.nepal/" target="_blank">maanaidekhi.nepal</a></p>
+            </div>
+        </div>
+    
+        <!-- Map Section -->
+        <div id="map"></div>
+    
+        <script>
+            function showProducts(category) {
+                var productImagesElement = document.getElementById('productImages');
+                productImagesElement.innerHTML = ''; // Clear existing product images
+        
+                // Define the order of categories
+                var categoryOrder = ['cake', 'molds', 'glass', 'botanical', 'otherGlass'];
+        
+                // Show products based on the selected category or show all
+                var categoriesToShow = category === 'all' ? categoryOrder : [category];
+        
+                // Map categories to their respective image sets
+                var categoryImages = {
+                    'glass': ['lav.jpg', 'peach.jpg', 'apple.jpg', 'bubblegum.jpg', 'rose.jpg', 'lemongrass.jpg', 'cottoncandy.jpg', 'jasmine.jpg', 'coffee.jpg', 'berries.jpg', 'lemon.jpg', 'mint.jpg', 'strawberry.jpg', 'sandalwood.jpg', 'chocolate.jpg', 'vanilla.jpg'],
+                    // Add other categories as needed
+                };
+        
+                // Iterate through categories to display products
+                categoriesToShow.forEach(function(cat) {
+                    if (cat in categoryImages) {
+                        categoryImages[cat].forEach(function(image) {
+                            var productImageElement = document.createElement('img');
+                            productImageElement.src = image;
+                            productImageElement.alt = cat.charAt(0).toUpperCase() + cat.slice(1) + ' - ' + image.split('.')[0];
+                            productImageElement.className = 'product-image';
+                            productImagesElement.appendChild(productImageElement);
+                        });
+                    } else {
+                        for (var i = 1; i <= 2; i++) {
+                            var productImageElement = document.createElement('img');
+                            productImageElement.src = 'placeholder_' + cat + '_' + i + '.jpg';
+                            productImageElement.alt = cat.charAt(0).toUpperCase() + cat.slice(1) + ' ' + i;
+                            productImageElement.className = 'product-image';
+                            productImagesElement.appendChild(productImageElement);
+                        }
+                    }
+                });
+            }
+    
+            // Function to open the map in a new window or tab
+            function openMap() {
+                window.open("https://www.google.co.uk/maps/place/Maharajgunj,+Kathmandu+44600,+Nepal/@27.7297846,85.3234278,15.22z/data=!4m6!3m5!1s0x39eb193854e20abb:0x8ff36d1f00e10346!8m2!3d27.7364789!4d85.3304212!16s%2Fg%2F1ym_k499k?entry=ttu");
+            }
+        </script>
+        
+        <!-- ... The rest of your HTML code ... -->
+    
+    
+    
+    
+    
+    </body>
+    <body>
+
+        <div class="header">
+            <img src="logo.jpg" alt="Logo" class="centered-image">
+        </div>
+    
+        <div class="welcome-text">
+            <h2>Welcome to Maanai Dekhi</h2>
+            <p>
+                Welcome to Maanai Dekhi, where we bring warmth and a personal touch to your moments. Immerse yourself in the enchanting glow of our handcrafted candles, reminiscent of the quality and charm of Yankee Candles. Each candle is a labor of love, crafted with precision and care to infuse your space with a unique and comforting fragrance. But we're more than just candles; we're the creators of affordable and one-of-a-kind gifts that speak to the heart. Explore our curated collection, where every piece tells a story. From personalized home decor to custom-crafted gifts, we take pride in offering you treasures that are as distinctive as the moments you cherish.
+            </p>
+        </div>
+    
+        <div class="options-bar">
+            <a href="#" onclick="showProducts('all')">All</a>
+            <a href="#" onclick="showProducts('cake')">Cake</a>
+            <a href="#" onclick="showProducts('molds')">Molds</a>
+            <a href="#" onclick="showProducts('glass')">Glass</a>
+            <a href="#" onclick="showProducts('botanical')">Botanical</a>
+            <a href="#" onclick="showProducts('otherGlass')">Other Glass</a>
+        </div>
+    
+        <div class="product-images" id="productImages">
+            <!-- Product images will be displayed here -->
+        </div>
+    
+        <!-- Small Texts Section -->
+        <div class="small-texts">
+            <div>
+                <p><a href="#" onclick="openMap()">Location</a></p>
+            </div>
+            <div>
+                <p><a href="https://www.instagram.com/maanaidekhi.nepal/" target="_blank">maanaidekhi.nepal</a></p>
+            </div>
+        </div>
+    
+        <!-- Map Section -->
+        <div id="map"></div>
+    
+        <script>
+            function showProducts(category) {
+                var productImagesElement = document.getElementById('productImages');
+                productImagesElement.innerHTML = ''; // Clear existing product images
+        
+                // Define the order of categories
+                var categoryOrder = ['cake', 'molds', 'glass', 'botanical', 'otherGlass'];
+        
+                // Show products based on the selected category or show all
+                var categoriesToShow = category === 'all' ? categoryOrder : [category];
+        
+                // Map categories to their respective image sets
+                var categoryImages = {
+                    'glass': ['lav.jpg', 'peach.jpg', 'apple.jpg', 'bubblegum.jpg', 'rose.jpg', 'lemongrass.jpg', 'cottoncandy.jpg', 'jasmine.jpg', 'coffee.jpg', 'berries.jpg', 'lemon.jpg', 'mint.jpg', 'strawberry.jpg', 'sandalwood.jpg', 'chocolate.jpg', 'vanilla.jpg'],
+                    // Add other categories as needed
+                };
+        
+                // Iterate through categories to display products
+                categoriesToShow.forEach(function(cat) {
+                    if (cat in categoryImages) {
+                        categoryImages[cat].forEach(function(image) {
+                            var productImageElement = document.createElement('img');
+                            productImageElement.src = image;
+                            productImageElement.alt = cat.charAt(0).toUpperCase() + cat.slice(1) + ' - ' + image.split('.')[0];
+                            productImageElement.className = 'product-image';
+                            productImagesElement.appendChild(productImageElement);
+                        });
+                    } else {
+                        for (var i = 1; i <= 2; i++) {
+                            var productImageElement = document.createElement('img');
+                            productImageElement.src = 'placeholder_' + cat + '_' + i + '.jpg';
+                            productImageElement.alt = cat.charAt(0).toUpperCase() + cat.slice(1) + ' ' + i;
+                            productImageElement.className = 'product-image';
+                            productImagesElement.appendChild(productImageElement);
+                        }
+                    }
+                });
+            }
+    
+            // Function to open the map in a new window or tab
+            function openMap() {
+                window.open("https://www.google.co.uk/maps/place/Maharajgunj,+Kathmandu+44600,+Nepal/@27.7297846,85.3234278,15.22z/data=!4m6!3m5!1s0x39eb193854e20abb:0x8ff36d1f00e10346!8m2!3d27.7364789!4d85.3304212!16s%2Fg%2F1ym_k499k?entry=ttu");
+            }
+        </script>
+        
+        <!-- ... The rest of your HTML code ... -->
+    
+    
+    
+    
+    
+    </body>
+</html>
