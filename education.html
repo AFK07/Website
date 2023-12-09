@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Rows with Text</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+    
+        .content {
+            padding: 10px;
+            position: relative;
+        }
+    
+        .image-row {
+            border: 2px solid black;
+            margin: 10px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+    
+        .image-row:nth-child(1) .text::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('plr1.jpg'); /* Set plr1.jpg as the background image for the first row */
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+            filter: blur(5px);
+        }
+    
+        .image-row:nth-child(2) .text::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('vb.png'); /* Set vb.png as the background image for the second row */
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+            filter: blur(5px);
+        }
+    
+        .image {
+            width: 150px;
+            height: auto;
+            display: block;
+            transition: filter 0.5s ease-in-out, opacity 1s ease-in-out;
+            filter: blur(5px);
+            opacity: 0;
+            animation: slideAndUnblur 1s ease-in-out forwards;
+            animation-delay: 0.5s;
+        }
+    
+        .text {
+            padding: 10px;
+            filter: blur(5px);
+            animation: slideAndUnblur 1s ease-in-out forwards;
+            opacity: 0;
+            animation-delay: 0.5s;
+            position: relative;
+            z-index: 1;
+            color: #000; /* Set text color to black */
+        }
+    
+        @keyframes slideAndUnblur {
+            0% {
+                transform: translateX(-100%);
+                filter: blur(5px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                filter: blur(0);
+                opacity: 1;
+            }
+        }
+    
+        .image-row .image,
+        .image-row.clicked .text {
+            animation-play-state: paused;
+        }
+    
+        .image-row.clicked .image,
+        .image-row .text {
+            animation-play-state: running;
+        }
+    </style>
+    
+    
+    
+</head>
+<body>
+
+    <!-- University of Portsmouth -->
+    <article class="image-row clicked">
+        <img src="uop.png" alt="uop" class="image">
+        <section class="content text">
+            <div>
+                <strong style="font-size: 24px;">University of Portsmouth - Bachelor's Degree in Computer Science (2022-2026)</strong>
+                <p><strong style="font-size: 20px;">Year 1:</strong></p>
+                <ul>
+                    <li style="font-size: 18px;">Developed problem-solving skills through algorithm analysis and testing.</li>
+                    <li style="font-size: 18px;">Proficient in Java, Dart, and Python for full-stack development, utilizing OOP principles and GUI development.</li>
+                    <li style="font-size: 18px;">Able to build entry-level interactive websites such as Surveys and menu profiles using HTML, JS, and CSS.</li>
+                    <li style="font-size: 18px;">Understanding of PSQL and SQL by building a standard database structure of a small-scale industry by manually inputting over 200 customers and product details as well as staff details, and big queries to filter out the demanded details.</li>
+                    <li style="font-size: 18px;">Application development processes utilizing Dart and Flutter to develop map-integrated applications.</li>
+                </ul>
+                <p><strong>Year 2:</strong></p>
+                <ul>
+                    <li>Developed multiple applications using Dart and Flutter, including a navigation assistance app and a fitness tracking application, showcasing proficiency in cross-platform mobile app development.</li>
+                    <li>Created menu and resume websites using HTML and CSS, highlighting skills in front-end web development and demonstrating a commitment to user-centric software solutions.</li>
+                </ul>
+            </div>
+        </section>
+    </article>
+
+    <!-- Kaasthamandap A-Level Academy -->
+    <article class="image-row clicked">
+        <img src="KAA.png" alt="kaa" class="image">
+        <section class="content text">
+            <div>
+                <strong>Kaasthamandap A-Level Academy (2019) · Computer Science · Pure Mathematics · Physics · Chemistry · General English</strong>
+                <!-- Additional content for Kaasthamandap A-Level Academy -->
+                <ul>
+                    <li>Delved into VB.NET during A levels for its beginner-friendly approach.</li>
+                    <li>Utilized VB.NET as a bridge from pseudocode to actual coding.</li>
+                    <li>Applied VB.NET for step-by-step problem-solving in coursework.</li>
+                    <li>Explored basic game development, crafting a chess game for practical learning.</li>
+                </ul>
+            </div>
+        </section>
+    </article>
+
+    <!-- Ashford College -->
+    <article class="image-row clicked">
+        <img src="ac.png" alt="ac" class="image">
+        <section class="content text">
+            <div>
+                <strong>Ashford College - GCSE (2022) · English · Higher Mathematics</strong>
+                <!-- Additional content for Ashford College -->
+                
+            </div>
+        </section>
+    </article>
+
+    <!-- Add more rows as needed -->
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Trigger the animation on page load for all rows with the "clicked" class
+            document.querySelectorAll('.image-row.clicked .image').forEach(function(image) {
+                image.style.animationPlayState = 'running';
+            });
+
+            document.querySelectorAll('.image-row.clicked .text').forEach(function(text) {
+                text.style.animationPlayState = 'running';
+            });
+        });
+    </script>
+
+</body>
+</html>
+
