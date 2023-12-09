@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gananayak Gurung</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="logo.jpg" type="image/x-icon">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url('headerbackground.jpg');
+            background-size: cover;
+            background-position: top;
+            background-repeat: no-repeat;
+            height: 50vh;
+        }
+
+        .centered-image {
+            max-width: 100%;
+            height: auto;
+            object-fit: contain;
+            position: relative;
+            z-index: 1;
+            filter: blur(5px); /* Initial blur effect */
+            opacity: 0; /* Initial opacity set to 0 */
+            animation: fadeInAndUnblur 1s ease-in-out forwards; /* Apply animation */
+            transform: scale(0.25); /* Image size */
+        }
+
+        .welcome-text {
+            text-align: center;
+            padding: 20px;
+            z-index: 2;
+            color: #000;
+            filter: blur(5px); /* Initial blur effect */
+            opacity: 0; /* Initial opacity set to 0 */
+            animation: fadeInAndUnblur 1s ease-in-out forwards; /* Apply animation */
+        }
+
+        .welcome-text h2 {
+            font-size: 2em;
+            margin-bottom: 10px;
+            color: #000;
+        }
+
+        .welcome-text p {
+            font-size: 1em;
+            margin: 0;
+            color: #000;
+        }
+
+        .options-bar {
+            text-align: center;
+            background-color: #f0f0f0;
+            padding: 10px 0;
+            filter: blur(5px); /* Initial blur effect */
+            opacity: 0; /* Initial opacity set to 0 */
+            animation: fadeInAndUnblur 1s ease-in-out forwards; /* Apply animation */
+        }
+
+        .options-bar a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #000;
+            font-weight: bold;
+            font-size: 1.2em;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .options-bar a:hover {
+            color: #333;
+            transform: translateY(-3px);
+        }
+
+        /* Common animation for fade-in and blur-to-unblur effect */
+        @keyframes fadeInAndUnblur {
+            0% {
+                opacity: 0;
+                filter: blur(5px);
+            }
+            100% {
+                opacity: 1;
+                filter: blur(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header Section -->
+    <section class="header">
+        <!-- Logo Image -->
+        <img src="pfp.jpg" alt="Logo" class="centered-image">
+    </section>
+
+    <!-- Welcome Text Section -->
+    <section class="welcome-text">
+        <!-- Title -->
+        <h2>Gananayak Gurung</h2>
+        <!-- Description -->
+        <p>
+            Results-driven computer science undergraduate seeking a challenging software engineering placement to leverage strong programming skills and academic foundation. Demonstrated ability to adapt quickly, problem-solve effectively, and work collaboratively in dynamic environments. Eager to apply knowledge and passion for technology to contribute to innovative projects while gaining practical experience and enhancing software development and engineering skills.
+        </p>
+    </section>
+
+    <!-- Options Bar Section -->
+    <section class="options-bar">
+        <!-- Navigation Buttons -->
+        <a href="#" onclick="showProducts('Education')">Education</a>
+        <a href="#" onclick="showProducts('Work History')">Work History</a>
+        <a href="#" onclick="showProducts('Projects')">Projects</a>
+        <a href="#" onclick="showProducts('Volunteer Activities')">Volunteer Activities</a>
+    </section>
+
+</body>
+
+</html>
+
+
+
+
+
+
