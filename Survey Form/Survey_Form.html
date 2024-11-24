@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
@@ -12,18 +13,18 @@
     <!-- initialising -->
     <form id="survey-form" for="name">
         <!-- textboxes -->
-        <label id="name-label">
-            <input type="text" placeholder="Enter your name" required/>
+        <label for="name" id="name-label">Enter your name
+            <input id="name" type="text" placeholder="Enter your name" required/>
         </label>
-        
-        <label id="email-label" for="email">
-            <input id="email" type="email" placeholder="email"/>
+        <br>
+        <label id="email-label"  for="email">Enter your email
+            <input id="email" type="email" placeholder="email" required/>
         </label>
-        
-        <label id="number-label" for="number">
-            <input id="number" type="number" min="13" max="120" placeholder="number"/>
+        <br>
+        <label for="number" id="number-label">Age:
+            <input id="number" type="number" min="13" max="120" placeholder="Enter your age" required/>
         </label>
-        
+        <br>
         <!-- dropdown selection -->
         <p>Choose your supervisor</p>
         <label for="dropdown">
@@ -36,18 +37,19 @@
         
 
         <!-- radios -->
-        <p>Choose course</p>
-        <label for="radio1" >
-            <input id="radio1" type="radio" name="radioCS" value="radioCS"/>Computer Science
-        </label>
-        <label for="radio2">
-            <input id="radio2" type="radio" name="radioSE" value="radioSE"/>Software Engineering
-        </label>
+        <p>Choose course:</p>
+        <input id="radio1" type="radio" name="course" value="CS" />
+        <label for="radio1">Computer Science</label>
+        <br>
+        <input id="radio2" type="radio" name="course" value="SE" />
+        <label for="radio2">Software Engineering</label>
+
         <!-- checkboxes -->
         <p>Method of study</p>
         <label for="checkbox1">
             <input type="checkbox" id="checkbox1" value="checkbox1"/>Part Time
         </label>
+        <br>
         <label for="checkbox2">
             <input type="checkbox" id="checkbox2" value="checkbox2"/>Full Time
         </label>
@@ -57,7 +59,7 @@
             <textarea id="comment" placeholder="Enter your comments"></textarea>
         </label>
         <!-- submission button -->
-        <button id="submut" type="submit">Submit</button>
+        <button id="submit" type="submit">Submit</button>
     </form>
     
     
