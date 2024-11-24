@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- title and description -->
+    <h1 id="title">Survey Form</h1>
+    <p id="description">Please enter your details.</p>
+    <!-- initialising -->
+    <form id="survey-form" for="name">
+        <!-- textboxes -->
+        <label id="name-label">
+            <input type="text" placeholder="Enter your name" required/>
+        </label>
+        
+        <label id="email-label" for="email">
+            <input id="email" type="email" placeholder="email"/>
+        </label>
+        
+        <label id="number-label" for="number">
+            <input id="number" type="number" min="13" max="120" placeholder="number"/>
+        </label>
+        
+        <!-- dropdown selection -->
+        <p>Choose your supervisor</p>
+        <label for="dropdown">
+            <select id="dropdown" name="referrer">
+                <option value="0"><input></option>
+                <option value="1">Senura<input /></option>
+                <option value="2">Damon<input /></option>
+            </select>
+        </label>
+        
+
+        <!-- radios -->
+        <p>Choose course</p>
+        <label for="radio1" >
+            <input id="radio1" type="radio" name="radioCS" value="radioCS"/>Computer Science
+        </label>
+        <label for="radio2">
+            <input id="radio2" type="radio" name="radioSE" value="radioSE"/>Software Engineering
+        </label>
+        <!-- checkboxes -->
+        <p>Method of study</p>
+        <label for="checkbox1">
+            <input type="checkbox" id="checkbox1" value="checkbox1"/>Part Time
+        </label>
+        <label for="checkbox2">
+            <input type="checkbox" id="checkbox2" value="checkbox2"/>Full Time
+        </label>
+        <!-- additional comments -->
+        <p>Additional Comments</p>
+        <label for="comments">
+            <textarea id="comment" placeholder="Enter your comments"></textarea>
+        </label>
+        <!-- submission button -->
+        <button id="submut" type="submit">Submit</button>
+    </form>
+    
+    
+</body>
+</html>
