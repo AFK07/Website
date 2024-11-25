@@ -1,0 +1,118 @@
+
+/* the top */
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Space between the logo and the nav links */
+    align-items: center; /* Vertically center the items */
+    padding: 0 20px; /* Optional padding for better spacing */
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px; /* Space between each link */
+    
+}
+
+.navigation {
+    text-decoration: none;
+    color: black;
+    font-size: 30px;
+}
+/*  */
+
+
+/* intro part */
+header {
+    padding: 20px;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between; /* Distribute space evenly */
+    align-items: center; /* Vertically align items */
+    gap: 50px; /* Space between columns */
+}
+
+.header-container img {
+    height: 220px;
+    width: auto;
+}
+
+.header-container .text-container {
+    flex: 1;               /* Flex-grow factor for equal width */
+    
+    max-width: 400px;      /* Fixed width for the text container */
+}
+
+.text-container h3 {
+    margin: 0 0 10px 0;    /* Margin: top 0, right 0, bottom 10px, left 0 */
+    font-size: 40px;       /* Font size for the heading */
+    line-height: 1.2;      /* Line height for spacing */
+}
+
+.text-container p {
+    margin: 0 0 10px 0;    /* Margin: top 0, right 0, bottom 10px, left 0 */
+    line-height: 1.5;      /* Line height for spacing */
+    font-size: 18px;
+}
+
+.text-container a {
+    color: white;             /* Text color for the link */
+    text-decoration: none;    /* Remove underline from the link */
+    background-color: #007bff; /* Add a background color for visibility */
+    padding: 10px 20px;       /* Add padding for a button-like appearance */
+    border-radius: 5px;       /* Round corners of the button */
+    
+    font-weight: bold;        /* Make the link text bold */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+
+/*  */
+/* quote section */
+
+.quote-entry {
+    position: relative;       /* Establish a positioning context */
+    display: inline-block;    /* Ensure the container fits the content */
+    width: 100%;              /* Optional: Set width as needed */
+    max-width: 800px;         /* Optional: Set a maximum width for the image */
+}
+
+.quote-entry img {
+    width: 100%;              /* Ensure the image fills the container */
+    /* display: block; */
+    filter:brightness(0.7);
+}
+
+.quote-text-overlay {
+    position: absolute;       /* Position relative to the container */
+    top: 50%;                 /* Center vertically */
+    left: 50%;                /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust position back to true center */
+    text-align: center;       /* Center text alignment */
+    color: white;             /* Make text visible over the image */
+}
+
+.quote-text-overlay h3 {
+    margin: 0 0 10px;         /* Adjust margins for spacing */
+    font-size: 44px;          /* Adjust font size as needed */
+}
+
+.quote-text-overlay p {
+    margin: 0 0 20px;         /* Add spacing below the paragraph */
+    font-size: 18px;          /* Adjust font size as needed */
+}
+
+.quote-text-overlay a {
+    color: white;             /* Text color for the link */
+    text-decoration: none;    /* Remove underline from the link */
+    background-color: #007bff; /* Add a background color for visibility */
+    padding: 10px 20px;       /* Add padding for a button-like appearance */
+    border-radius: 5px;       /* Round corners of the button */
+    font-weight: bold;        /* Make the link text bold */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+.quote-text-overlay a:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
