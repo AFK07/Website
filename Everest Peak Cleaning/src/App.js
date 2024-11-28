@@ -3,6 +3,10 @@ import './App.css'; // Ensure this matches the CSS file you're using
 import entryImage from './entry.jpg'; // Correct path to entry image
 import logo from './logo.png'; // Correct path to logo image
 import tabLogo from './logo for tab.png'; // Correct path to tab logo
+import residentCleaning from './images/residentcleaning.png';
+import eventPartyCleanup from './images/event&partycleanup.png';
+import servicedAccom from './images/servicedaccom&airbnb.png';
+
 
 function App() {
   return (
@@ -57,8 +61,17 @@ function App() {
           </div>
         </div>
       </header>
+      <div class="cleaning-services">
+        <h3>Our Comprehensive Cleaning Services</h3>
+        <div class= "cleaning-details">
+          <img src={residentCleaning} alt="Residential Cleaning" />
+          <img src={eventPartyCleanup} alt="Everest and Party Cleanup" />
+          <img src={servicedAccom} alt="Serviced Accommodation & Airbnb" />
+        </div>
+      </div>
     </div>
   );
 }
 
 export default App;
+
