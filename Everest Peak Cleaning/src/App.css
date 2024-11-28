@@ -17,6 +17,68 @@
   font-size: 30px;
 }
 
+
+
+
+/* Quote Section */
+.quote-entry {
+  position: relative;          /* Establish a positioning context */
+  width: 100vw;                /* imp : Stretch the container to the full viewport width */
+  height: 600px;               /* imp : Set a fixed height for the section */
+  overflow: hidden;            /* Hide any overflowing parts of the image */
+}
+
+.quote-entry img {
+  position: absolute;          /* Position relative to the container */
+  top: 50%;                    /* Center vertically */
+  left: 50%;                   /* Center horizontally */
+  transform: translate(-50%, -50%); /*  imp : Adjust position back to center */
+  width: 100%;                 /* Stretch the image horizontally */
+  height: auto;                /* Maintain aspect ratio */
+  min-height: 100%;            /* Ensure the image covers the container vertically */
+  object-fit: cover;           /* Ensure the image fully covers the container */
+  filter: brightness(0.7);     /* Slightly darken the image */
+  padding-top: 20px;
+}
+
+.quote-text-overlay {
+  position: absolute;          /* Position relative to the container */
+  top: 50%;                    /* Center vertically */
+  left: 50%;                   /* Center horizontally */
+  transform: translate(-50%, -50%); /* Adjust position back to true center */
+  text-align: center;          /* Center text alignment */
+  color: white;                /* Make text visible over the image */
+  z-index: 1;                  /* Ensure text appears above the image */
+}
+
+.quote-text-overlay h3 {
+  margin: 0 0 10px;            /* Adjust margins for spacing */
+  font-size: 44px;             /* Adjust font size as needed */
+}
+
+.quote-text-overlay p {
+  margin: 0 0 20px;            /* Add spacing below the paragraph */
+  font-size: 18px;             /* Adjust font size as needed */
+}
+
+.quote-text-overlay a {
+  color: white;                /* Text color for the link */
+  text-decoration: none;       /* Remove underline from the link */
+  background-color: #007bff;   /* Add a background color for visibility */
+  padding: 10px 20px;          /* Add padding for a button-like appearance */
+  border-radius: 5px;          /* Round corners of the button */
+  font-size: 15px;              /* Button and text size */
+  font-weight: bold;           /* Make the link text bold */
+  transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+.quote-text-overlay a:hover {
+  background-color: #0056b3;   /* Darker shade on hover */
+}
+
+
+
+
 /* Header Section */
 header {
   padding: 20px;
@@ -24,85 +86,82 @@ header {
 
 .header-container {
   display: flex;
-  justify-content: space-between; /* Distribute space evenly */
-  align-items: center; /* Vertically align items */
-  gap: 50px; /* Space between columns */
+  justify-content: space-evenly; /* Center the columns horizontally */
+  align-items: center;     /* Center items vertically */
+  gap: 30px;               /* Reduce the space between image and text */
+  padding: 0 50px;         /* Add padding on the sides for breathing room */
 }
 
 .header-container img {
-  height: 220px;
+  height: 220px;           /* Keep the image size */
   width: auto;
 }
 
 .header-container .text-container {
-  flex: 1;               /* Flex-grow factor for equal width */
-  max-width: 400px;      /* Fixed width for the text container */
+  flex: 1;                 /* Allow flexibility for the text container */
+  max-width: 500px;        /* Slightly increase max width of the text */
+  text-align: left;        /* Keep the text left-aligned */
 }
 
 .text-container h3 {
-  margin: 0 0 10px 0;    /* Margin: top 0, right 0, bottom 10px, left 0 */
-  font-size: 40px;       /* Font size for the heading */
-  line-height: 1.2;      /* Line height for spacing */
+  margin: 0 0 10px 0;      /* Adjust spacing below the heading */
+  font-size: 40px;
 }
 
 .text-container p {
-  margin: 0 0 10px 0;    /* Margin: top 0, right 0, bottom 10px, left 0 */
-  line-height: 1.5;      /* Line height for spacing */
+  margin: 0 0 20px 0;      /* Adjust spacing below the paragraph */
   font-size: 18px;
+  line-height: 1.5;
 }
 
 .text-container a {
-  color: white;             /* Text color for the link */
-  text-decoration: none;    /* Remove underline from the link */
-  background-color: #007bff; /* Add a background color for visibility */
-  padding: 10px 20px;       /* Add padding for a button-like appearance */
-  border-radius: 5px;       /* Round corners of the button */
-  font-weight: bold;        /* Make the link text bold */
-  transition: background-color 0.3s ease; /* Smooth hover effect */
+  color: white;
+  text-decoration: none;
+  background-color: #007bff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  display: inline-block;
+  text-align: center;
 }
 
-/* Quote Section */
-.quote-entry {
-  position: relative;       /* Establish a positioning context */
-  display: inline-block;    /* Ensure the container fits the content */
-  width: 100%;              /* Optional: Set width as needed */
-  max-width: 800px;         /* Optional: Set a maximum width for the image */
+.text-container a:hover {
+  background-color: #0056b3;     /* Darker shade on hover */
 }
 
-.quote-entry img {
-  width: 100%;              /* Ensure the image fills the container */
+
+
+/* cleaning services */
+/* Cleaning services container */
+.cleaning-services {
+  text-align: center;      /* Center align the text */
+  padding: 20px;           /* Add padding to the container */
+}
+.cleaning-services h3 {
+  font-size: 40px;
+}
+
+.cleaning-details {
+  display: flex;           /* Use flexbox to align items in one row */
+  justify-content: space-between; /* Distribute the images with gaps between them */
+  gap: 20px;               /* Set 20px gap between the images */
+  margin-top: 20px;        /* Margin for spacing */
+}
+
+.cleaning-details img {
+  width: 33%;               /* Make images take 1/3 of the container width */
+  height: 400px;            /* Set a fixed height for the images */
+  object-fit: cover;        /* Ensure the image fully covers the container */
   filter: brightness(0.7);  /* Slightly darken the image */
+  padding-top: 20px;        /* Padding at the top of the image */
+  transition: transform 0.3s ease-in-out;  /* Smooth transition for any transformations */
 }
 
-.quote-text-overlay {
-  position: absolute;       /* Position relative to the container */
-  top: 50%;                 /* Center vertically */
-  left: 50%;                /* Center horizontally */
-  transform: translate(-50%, -50%); /* Adjust position back to true center */
-  text-align: center;       /* Center text alignment */
-  color: white;             /* Make text visible over the image */
+/* Optional: Add responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .cleaning-details img {
+    width: 100%;            /* Make images take full width on smaller screens */
+    height: 200px;          /* Adjust the height for smaller screens */
+  }
 }
 
-.quote-text-overlay h3 {
-  margin: 0 0 10px;         /* Adjust margins for spacing */
-  font-size: 44px;          /* Adjust font size as needed */
-}
-
-.quote-text-overlay p {
-  margin: 0 0 20px;         /* Add spacing below the paragraph */
-  font-size: 18px;          /* Adjust font size as needed */
-}
-
-.quote-text-overlay a {
-  color: white;             /* Text color for the link */
-  text-decoration: none;    /* Remove underline from the link */
-  background-color: #007bff; /* Add a background color for visibility */
-  padding: 10px 20px;       /* Add padding for a button-like appearance */
-  border-radius: 5px;       /* Round corners of the button */
-  font-weight: bold;        /* Make the link text bold */
-  transition: background-color 0.3s ease; /* Smooth hover effect */
-}
-
-.quote-text-overlay a:hover {
-  background-color: #0056b3; /* Darker shade on hover */
-}
