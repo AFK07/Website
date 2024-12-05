@@ -15,7 +15,15 @@
   text-decoration: none;
   color: black;
   font-size: 30px;
+  transition: transform 0.3s ease, color 0.3s ease; /* Smooth transition for hover effect */
+  font-weight: bold;
 }
+
+.navigation:hover {
+  transform: scale(1.2); /* Enlarge by 20% */
+  color: #007BFF; /* Optional: Change color on hover */
+}
+
 
 
 
@@ -53,12 +61,13 @@
 
 .quote-text-overlay h3 {
   margin: 0 0 10px;            
-  font-size: 44px;            
+  font-size: 84px;            
 }
 
 .quote-text-overlay p {
   margin: 0 0 20px;            
-  font-size: 18px;            
+  font-size: 32px; 
+  font-weight: bold;           
 }
 
 .quote-text-overlay a {
@@ -78,12 +87,14 @@
 
 
 
+
+
 /* Header Section */
 /* Header Section */
 /* Header Section */
 /* Header Section */
 header {
-  padding: 20px;
+  padding: 120px;
 }
 
 .header-container {
@@ -95,13 +106,13 @@ header {
 }
 
 .header-container img {
-  height: 220px;           /* Keep the image size */
+  height: 360px;           /* Keep the image size */
   width: auto;
 }
 
 .header-container .text-container {
   flex: 1;                 /* Allow flexibility for the text container */
-  max-width: 1000px;        /* changes width of the text */
+  max-width: 450px;        
   min-width: 450px;         /* changes width of the text */
   text-align: left;        
 }
@@ -263,6 +274,28 @@ header {
   text-align: center;           
 }
 
+/* Description text */
+.description {
+  position: absolute;
+  bottom: -100%; /* Initially hidden below the image */
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8); /* Background overlay */
+  color: white;
+  padding: 10px;
+  font-size: 16px;
+  text-align: center;
+  transform: translateY(100%); /* Hidden state */
+  opacity: 0; /* Fully transparent */
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+/* Active description (when revealed) */
+.image-container .description.show {
+  transform: translateY(0); /* Slide into view */
+  opacity: 1; /* Fully visible */
+}
+
 /* Optional: Add responsive adjustments for smaller screens */
 @media (max-width: 768px) {
   .image-container {
@@ -292,7 +325,122 @@ header {
 }
 
 .view-all-button:hover {
-  background-color: #0056b3;   
+  background-color: #0056b3;  
+   
+}
+
+
+
+
+
+
+
+/* About Section Styling */
+.about-section {
+  background-color: #f9f9f9; /* Slightly off-white background for contrast */
+  margin: 0;  /* Remove margin */
+  padding: 0; /* Remove padding */
+  text-align: center;  /* Centers the text */
+  visibility: visible;  /* Ensure it remains visible */
+}
+
+.about-section h2 {
+  font-size: 36px;  /* Slightly smaller for better readability */
+  color: #333;  /* Darker color for contrast */
+  font-weight: bold;
+  margin: 0; /* Remove margin */
+}
+
+.about-section p {
+  font-size: 18px;
+  color: #555;  /* Slightly lighter color for paragraph */
+  line-height: 1.8;
+  margin: 0; /* Remove margin */
+  max-width: 900px;  /* Limits width for readability */
+  margin: 0 auto;  /* Centers the paragraph */
+}
+
+
+
+
+/* About Section Rows Styling */
+.about-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0; /* Remove gap */
+  margin: 0; /* Remove margin */
+}
+
+.about-col {
+  flex: 1;
+  min-width: 280px; /* Ensures columns don’t get too narrow on smaller screens */
+  max-width: 48%; /* Ensures the columns don't get too wide on larger screens */
+  display: flex;
+  flex-direction: column;  /* Aligns items vertically */
+  justify-content: center; /* Vertically centers content within .about-col */
+  align-items: center; /* Horizontally centers content */
+  text-align: center; /* Centers text horizontally */
+  margin: 0; /* Remove margin */
+}
+
+/* Ensures images fill the available space and are responsive */
+.about-image {
+  width: 100%;  /* Ensures image fills the column's width */
+  height: auto;
+  object-fit: cover;  /* Ensures image covers the area without stretching */
+  display: block;
+  margin: 0; /* Remove margin */
+}
+
+/* Text styling for better readability */
+.about-row .about-col h3,
+.about-row .about-col p {
+  font-size: 16px;
+  color: #666;
+  line-height: 1.6;
+  padding: 30px;
+  margin: 0; /* Remove margin */
+  text-align: center; /* Ensures both h3 and p are centered */
+}
+
+/* Specific styling for h3 tags */
+.about-row .about-col h3 {
+  font-size: 30px;  /* Larger font size for h3 */
+  color: #333;  /* Darker color for h3 */
+  font-weight: bold;
+  margin-bottom: 10px; /* Add margin below h3 */
+}
+
+
+
+
+@media (max-width: 768px) {
+  .about-section {
+    padding: 0; /* Remove padding on smaller screens */
+  }
+
+  .about-section h2 {
+    font-size: 28px;  /* Reduces heading size for mobile */
+  }
+
+  .about-section p {
+    font-size: 16px;  /* Reduces paragraph size for mobile */
+  }
+
+  .about-row {
+    flex-direction: column; /* Stack the rows vertically on small screens */
+    margin: 0; /* Remove margin */
+  }
+
+  .about-col {
+    max-width: 100%; /* Full width for columns on mobile */
+    margin: 0; /* Remove margin */
+  }
+
+  .about-image {
+    margin: 0; /* Remove margin */
+  }
 }
 
 
@@ -306,129 +454,133 @@ header {
 
 
 
-/* Main container for the contact section */
-/* Main container for the contact section */
+
+
+
 /* Main container for the contact section */
 .contact {
-  display: flex; 
-  width: 100%; 
-  padding-top: 50px; 
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: stretch; /* Stretch the child elements to match their height */
+  padding: 40px;
+  box-sizing: border-box; /* Include padding in width calculation */
+  min-height: 800px; /* Maintain a minimum height for the entire row */
 }
 
 /* Left section for contact details */
 .contact-info {
-  width: 50%; 
-  background-color: darkblue; 
-  color: white; 
-  padding: 40px; 
-  box-sizing: border-box; 
-  text-align: left; 
+  width: 50%;
+  background-color: darkblue;
+  color: white;
+  padding: 40px;
+  box-sizing: border-box;
+  text-align: left; /* Align text to the left */
   display: flex;
-  flex-direction: column; /* Stack content vertically */
+  flex-direction: column;
   justify-content: center; /* Vertically center content */
+  align-items: flex-start; /* Align items to the start (left) */
 }
 
+/* Contact Info Section Styles */
 .contact-info h3 {
-  margin-bottom: 20px; 
-  font-size: 36px; 
+  margin-bottom: 20px;
+  font-size: 46px;
 }
 
 .contact-info p {
-  margin-bottom: 15px; 
-  line-height: 1.6; 
-  font-size: 18px; 
+  margin-bottom: px;
+  line-height: 1.9;
+  font-size: 18px;
 }
 
 .contact-info a {
-  color: white; 
+  color: white;
   text-decoration: underline; /* Add underline for visibility */
-  transition: color 0.3s ease; /* Smooth color transition */
+  transition: color 0.3s ease;
 }
 
 .contact-info a:hover {
   color: #d1e3ff; /* Lighter shade of white on hover */
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .contact {
-    flex-direction: column; /* Stack sections vertically on small screens */
-  }
-
-  .contact-info {
-    width: 100%; 
-    padding: 20px; 
-  }
-}
-
-
-
-/* Parent container for both sections */
-.contact {
-  display: flex; 
-  width: 100%; 
-  justify-content: space-between; 
-  align-items: flex-start; 
-  padding: 40px; 
-  box-sizing: border-box; /* Include padding in the width calculation */
-}
-
-/* Styling for contact-info (left section) */
-.contact-info {
-  width: 50%;
-  color: white;
-  background-color: darkblue;
-  padding: 20px; 
-  box-sizing: border-box; /* Include padding in width */
-  display: flex;
-  flex-direction: column; 
-  justify-content: center; 
-}
-
-/* Styling for contact-form (right section) */
+/* Right section for the form */
 .contact-form {
-  width: 50%; 
-  padding: 20px; 
-  box-sizing: border-box; 
+  width: 50%;
+  background-color: darkblue; /* Same background as contact-info */
+  color: white;
+  padding: 40px;
+  box-sizing: border-box;
   display: flex;
-  justify-content: center; 
-  align-items: center; 
-  background-color: darkblue; 
-  color: white; 
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* Horizontally center content */
+  height: auto; /* Let flexbox determine height */
 }
+
+
+
+
+
+
 
 /* Styling for ContactForm */
 .ContactForm {
-  width: 100%; 
-  max-width: 600px; 
+  width: 100%;
+  max-width: 600px;
   display: flex;
-  flex-direction: column; 
-  gap: 20px; 
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  box-sizing: border-box;
 }
 
-/* Input field styling */
+/* Input field rows for name and contacts */
 .client-name,
 .client-contacts {
-  display: flex; 
-  gap: 20px; 
+  display: flex;
+  gap: 20px;
   width: 100%;
-  justify-content: center;
+  justify-content: space-between; /* Align fields with space between them */
 }
 
-.client-name input,
-.client-contacts input {
-  width: 48%; /* Each input takes 48% of the width */
-  padding: 10px;
+/* Each input group (first/last name, email/phone) */
+.client-name div,
+.client-contacts div {
+  width: 48%; /* Each field takes up 48% of the row */
+  display: flex;
+  flex-direction: column; /* Stack label on top of input */
+}
+
+/* Single-column rows for address, subject, enquiry */
+.client-address,
+.client-subject,
+.client-enquiry {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Label styling */
+.client-name label,
+.client-contacts label,
+.client-address label,
+.client-subject label,
+.client-enquiry label {
+  margin-bottom: 5px;
   font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-sizing: border-box; 
+  font-weight: bold;
+  color: white;
 }
 
+/* Input and textarea styling */
+.client-name input,
+.client-contacts input,
 .client-address input,
 .client-subject input,
 .client-enquiry textarea {
-  width: 100%; 
+  width: 100%;
   padding: 10px;
   font-size: 16px;
   border: 1px solid #ccc;
@@ -437,51 +589,100 @@ header {
 }
 
 .client-enquiry textarea {
-  resize: none; /* Prevent resizing */
-  min-height: 150px; /* Make textarea larger */
+  resize: none;
+  min-height: 150px;
 }
 
-/* Submit button styling */
-.ContactForm button {
-  width: 100%; /* Full width button */
-  padding: 10px;
-  font-size: 18px;
-  font-weight: bold;
-  color: darkblue;
-  background-color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-/* Button hover effect */
-.ContactForm button:hover {
-  background-color: cyan; /* Slightly darker blue on hover */
-}
-
-/* Responsive Design */
+/* Responsive Design Adjustments */
 @media (max-width: 768px) {
-  .contact {
-    flex-direction: column; /* Stack the sections vertically */
-    padding: 20px; /* Reduce padding for smaller screens */
-  }
-
-  .contact-info,
-  .contact-form {
-    width: 100%; /* Full width for both sections */
+  .ContactForm {
+    width: 90%;
   }
 
   .client-name,
   .client-contacts {
-    flex-direction: column; /* Stack inputs vertically */
+    flex-direction: column; /* Stack fields for smaller screens */
   }
 
-  .client-name input,
-  .client-contacts input {
-    width: 100%; /* Make inputs full-width on small screens */
+  .client-name div,
+  .client-contacts div {
+    width: 100%; /* Full width for inputs on small screens */
   }
 }
+
+/* General Input and Textarea Styling */
+.client-name input,
+.client-contacts input,
+.client-address input,
+.client-subject input,
+.client-enquiry textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  background: transparent; /* Ensure background stays transparent */
+  border: none; /* Remove borders */
+  border-bottom: 2px solid white; /* Add white underline */
+  color: white; /* White text for visibility */
+  outline: none; /* Remove default focus outline */
+  transition: border-color 0.3s ease; /* Smooth transition for underline on focus */
+  box-sizing: border-box;
+}
+
+/* Focus State Styling for Input Fields */
+.client-name input:focus,
+.client-contacts input:focus,
+.client-address input:focus,
+.client-subject input:focus,
+.client-enquiry textarea:focus {
+  background: transparent; /* Keep transparency on focus */
+  border-bottom: 2px solid cyan; /* Cyan underline on focus */
+}
+
+/* Placeholder Text Styling */
+.client-name input::placeholder,
+.client-contacts input::placeholder,
+.client-address input::placeholder,
+.client-subject input::placeholder,
+.client-enquiry textarea::placeholder {
+  color: rgba(255, 255, 255, 0.6); /* Light white (semi-transparent) placeholder text */
+}
+
+/* Adjust Textarea Styling */
+.client-enquiry textarea {
+  resize: none; /* Prevent resizing */
+  min-height: 150px; /* Maintain a good height for the textarea */
+}
+
+
+/* Styling for Submit Button */
+button[type="submit"] {
+  width: 100%; /* Make the button the same width as the form */
+  padding: 12px;
+  font-size: 16px;
+  background: transparent; /* Transparent background */
+  color: white; /* White text */
+  border: 2px solid white; /* White border to match the underline */
+  border-radius: 5px;
+  cursor: pointer; /* Pointer cursor on hover */
+  outline: none; /* Remove default focus outline */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for background color */
+  box-sizing: border-box; /* Ensure padding and borders are included in width */
+}
+
+/* Button Hover State */
+button[type="submit"]:hover {
+  background-color: cyan; /* Cyan background on hover */
+  color: black; /* Black text on hover for contrast */
+  border-color: cyan; /* Cyan border on hover */
+}
+
+/* Button Focus State */
+button[type="submit"]:focus {
+  background-color: cyan; /* Cyan background on focus */
+  color: black; /* Black text on focus */
+  border-color: cyan; /* Cyan border on focus */
+}
+
 
 
 
