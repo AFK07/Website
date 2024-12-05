@@ -3,9 +3,14 @@ import './App.css'; // Ensure this matches your CSS file
 import entryImage from './entry.jpg'; // Correct path to entry image
 import logo from './logo.png'; // Correct path to logo image
 import tabLogo from './logo for tab.png'; // Correct path to tab logo
+import headerimg from './headerimg.png'
 import residentCleaning from './images/residentcleaning.png';
 import eventPartyCleanup from './images/event&partycleanup.png';
 import servicedAccom from './images/servicedaccom&airbnb.png';
+import bpc from './images/bpc.jpg';
+import tp from './images/tp.jpg';
+import osc from './images/osc.jpg';
+import eft from './images/eft.jpg';
 
 // Navbar Component
 const Navbar = () => (
@@ -38,7 +43,7 @@ const QuoteSection = () => (
 const Header = () => (
   <header>
     <div className="header-container">
-      <img src={logo} alt="Logo" />
+      <img src={headerimg} alt="" />
       <div className="text-container">
         <h3>Your Trusted Cleaning Service Provider</h3>
         <p>
@@ -76,6 +81,86 @@ const CleaningServices = () => (
   </div>
 );
 
+
+
+// About Section Component with Two Rows (Updated with your images)
+const About = () => (
+  <section className="about-section">
+    <h2>About Everest Peak Cleaning CO. Ltd</h2>
+    <p>
+      Established in February 2024, our aim is to provide exceptional
+      bespoke cleaning services tailored to meet the unique needs of
+      each individual client. We strive to create clean and hygienic
+      environments that promote health, comfort, and well-being for
+      those who entrust us with the care of their homes.
+    </p>
+    <h2>Our Cleaning Mission</h2>
+    <p>
+      At Everest Peak Cleaning CO. Ltd, our mission is to exceed our
+      clients' expectations by delivering meticulous cleaning services
+      that enhance the quality of their living spaces. We are committed
+      to providing personalized cleaning solutions that cater to the
+      specific preferences and requirements of each client, ensuring that
+      every home we clean is a sanctuary of cleanliness and tranquility.
+      Through our attention to detail, professionalism, and dedication
+      to customer satisfaction, we aim to become the trusted partner for
+      all cleaning needs in our flourishing community.
+    </p>
+
+    {/* Row 1 with image on the left, text on the right (bpc and tp) */}
+    <div className="about-row">
+      <div className="about-col">
+        <img src={bpc} alt="Bespoke Cleaning" className="about-image" />
+      </div>
+      <div className="about-col">
+        <h3>Bespoke Professional Consultations</h3>
+        <p>We understand that every space is distinct and unique. 
+          Our expert team offers on-site consultations to assess your cleaning 
+          requirements and discuss the optimal approach for achieving a pristine 
+          environment. We prioritise understanding your expectations and delivering 
+          personalised cleaning solutions that align precisely with your vision.</p>
+      </div>
+      <div className="about-col">
+        <img src={tp} alt="Party Cleanup" className="about-image" />
+      </div>
+      <div className="about-col">
+        <h3>Transparent Pricing</h3>
+        <p>At Everest Peak Cleaning we believe in transparency and integrity. 
+          That's why we provide detailed and competitive cleaning estimates, ensuring that you 
+          have a clear understanding of the services and costs involved before we commence our 
+          cleaning operations.</p>
+      </div>
+    </div>
+
+    {/* Row 2 with text on the left, image on the right (osc and eft) */}
+    <div className="about-row">
+      <div className="about-col">
+        <h3>Our Service Guarantee</h3>
+        <p>At Everest Peak Cleaning CO. Ltd, we are committed to upholding the highest standards 
+          of cleaning excellence. We strive to exceed your cleaning expectations, and our dedication 
+          to quality and customer satisfaction sets us apart. Your trust in our services motivates 
+          us to continually enhance our cleaning practices and deliver outstanding results.</p>
+      </div>
+      <div className="about-col">
+        <img src={osc} alt="Serviced Accommodation" className="about-image" />
+      </div>
+      <div className="about-col">
+        <h3>Exquisite Finishing Touches</h3>
+        <p>We take pride in adding the final touches that elevate the cleanliness and aesthetics 
+          of your space. From immaculate surfaces to fresh fragrances, we ensure that every detail 
+          is perfected, leaving you with a beautifully refreshed environment.</p>
+      </div>
+      <div className="about-col">
+        <img src={eft} alt="End of Tenancy" className="about-image" />
+      </div>
+    </div>
+  </section>
+);
+
+
+
+
+
 // Contact Section Component
 const Contact = () => (
   <div className="contact">
@@ -85,6 +170,7 @@ const Contact = () => (
         Reach out to us by filling out the form or give us a call to schedule a complimentary on-site assessment
         for your cleaning needs. Service areas include a 20-mile radius from our base in Farnborough.
       </p>
+      <p>*If your cleaning needs fall further than the 40 miles radius, please let us know.</p>
       <p>
         <a href="https://www.google.com/maps/place/Ferneberga+House,+Alexandra+Rd,+Farnborough+GU14+6DQ" target="_blank">
           Suite 1.17 Ferneberga House, Alexander Road, Farnborough, GU14 6DQ
@@ -95,35 +181,65 @@ const Contact = () => (
       </p>
       <p><a href="tel:07450403112">07450 403 112</a></p>
     </div>
-    <ContactForm />
+    <div className="contact-form">
+      <ContactForm />
+    </div>
   </div>
 );
 
-// Contact Form Component
+
 const ContactForm = () => (
   <form className="ContactForm">
+    {/* Name Fields in the Same Row */}
     <div className="client-name">
-      <input type="text" placeholder="First Name" required />
-      <input type="text" placeholder="Last Name" required />
+      <div>
+        <label htmlFor="first-name">First Name</label>
+        <input type="text" id="first-name"  required />
+      </div>
+      <div>
+        <label htmlFor="last-name">Last Name</label>
+        <input type="text" id="last-name"  required />
+      </div>
     </div>
+
+    {/* Email and Phone Number in the Same Row */}
     <div className="client-contacts">
-      <input type="email" placeholder="Email" required />
-      <input type="tel" placeholder="Phone Number" required />
+      <div>
+        <label htmlFor="email">Email</label>
+        <input type="email" id="email"  required />
+      </div>
+      <div>
+        <label htmlFor="phone">Phone Number</label>
+        <input type="tel" id="phone"  required />
+      </div>
     </div>
+
+    {/* Address in its own Row */}
     <div className="client-address">
-      <input type="text" placeholder="Address" required />
+      <label htmlFor="address">Address</label>
+      <input type="text" id="address"  required />
     </div>
+
+    {/* Subject in its own Row */}
     <div className="client-subject">
-      <input type="text" placeholder="Subject" required />
+      <label htmlFor="subject">Subject</label>
+      <input type="text" id="subject"  required />
     </div>
+
+    {/* Client Enquiry in its own Row */}
     <div className="client-enquiry">
-      <textarea placeholder="Type your message here" rows="5" required></textarea>
+      <label htmlFor="enquiry">Client Enquiry</label>
+      <textarea id="enquiry"  rows="5" required></textarea>
     </div>
+
+    {/* Submit Button */}
     <div className="form-row">
       <button type="submit">Submit</button>
     </div>
   </form>
 );
+
+
 
 // Google Map Component
 const LocationMap = () => (
@@ -149,11 +265,13 @@ function App() {
       <QuoteSection />
       <Header />
       <CleaningServices />
+      <About />  {/* Ensure About is rendered here */}
       <Contact />
       <LocationMap />
     </>
   );
 }
+
 
 export default App;
 
